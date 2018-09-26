@@ -1,0 +1,366 @@
+@border-color: #ccc;
+@a-color: #666;
+@main-color: #e92322;
+
+/* 头部区域样式 */
+
+#header {
+    border-bottom: 1px solid @border-color;
+    .row {
+        /* 一般选择标签的时候都会带>避免误杀里面的标签 */
+        >div {
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            font-size: 12px;
+            border-right: 1px solid @border-color;
+            &:first-child {
+                >a {
+                    display: block;
+                }
+            }
+            &:last-child {
+                border-right: 0px;
+            }
+            >a {
+                color: @a-color;
+                position: relative;
+                >img {
+                    display: none;
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    z-index: 999;
+                }
+                &:hover {
+                    text-decoration: none;
+                    >img {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* 导航条区域 */
+
+#nav {
+    background-color: #fff;
+    margin-bottom: 0;
+    z-index: 998;
+    /* 固定定位后没有默认100%宽度 要手动设置宽度100% */
+    width: 100%;
+    /* 要添加top0 让导航条吸在顶部 如果不加top值 原来标准流的时候位置在就在哪里 */
+    top: 0px;
+    /* 导航条头部 */
+    .navbar-header {
+        .navbar-toggle {
+            margin-top: 23px;
+        }
+        .navbar-brand {
+            /* 设置高度 固定了高度50px  覆盖成80px*/
+            height: 80px;
+            /*因为a自带了上下15px padding */
+            line-height: 50px;
+            .icon-icon {
+                font-size: 30px;
+                color: @main-color;
+            }
+            .icon-logo {
+                font-size: 30px;
+                color: #000;
+            }
+        }
+    }
+    /* 导航条身体 */
+    .navbar-collapse {
+        .navbar-nav {
+            >li {
+                >a {
+                    height: 80px;
+                    line-height: 50px;
+                    &:hover {
+                        border-bottom: 2px solid @main-color;
+                    }
+                }
+                &.active {
+                    >a {
+                        background-color: #fff;
+                        border-bottom: 2px solid @main-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* 轮播图的样式 */
+
+#slide {
+    .large-image {
+        /* 设置大图样式 高度高度 背景居中 */
+        display: block;
+        width: 100%;
+        height: 410px;
+        background-position: center center;
+    }
+    .small-image {
+        /* 小图100%宽度撑满即可 */
+        display: block;
+        >img {
+            width: 100%;
+        }
+    }
+}
+
+
+/* 特色介绍区域样式 */
+
+#feature {
+    padding: 40px 0;
+    .media {
+        margin-bottom: 10px;
+        >a {
+            color: @a-color;
+            &:hover {
+                color: @main-color;
+            }
+        }
+    }
+}
+
+
+/* 立即预约样式 */
+
+#booking {
+    border-top: 1px solid @border-color;
+    border-bottom: 1px solid @border-color;
+    line-height: 60px;
+}
+
+
+/* 商品区域的样式 */
+
+#products {
+    padding: 40px 0;
+    background-color: #f0f0f0;
+    .ul-wrapper {
+        overflow:auto;
+        /* tab栏标题 */
+        .nav-tabs {
+            /* ul宽度是写死的是所有li的盒子的宽度 */
+            width: 580px;
+            >li {
+                &.active {
+                    >a {
+                        background-color: transparent;
+                        border-bottom: 3px solid @main-color;
+                    }
+                }
+                >a {
+                    font-size: 16px;
+                    color: #000;
+                    border: none;
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+    /* tab栏面板 */
+    .tab-content {
+        .tab-pane {
+            .product {
+                display: flex;
+                background-color: #fff;
+                margin-top: 20px;
+                &.red {
+                    background-color: @main-color;
+                    color: #fff;
+                    position: relative;
+                    &::before {
+                        content: "\e915";
+                        font-family: 'itcast';
+                        font-size: 30px;
+                        position: absolute;
+                        left: 0px;
+                        top: -6px;
+                    }
+                }
+                .product-left {
+                    padding: 10px;
+                    flex: 1;
+                    height: 160px;
+                    >h4 {
+                        text-align: center;
+                    }
+                    .product-price {
+                        margin-bottom: 10px;
+                        p {
+                            margin-bottom: 0;
+                        }
+                        .pull-right {
+                            text-align: right;
+                        }
+                    }
+                }
+                .product-right {
+                    width: 120px;
+                    height: 160px;
+                    border-left: 1px dashed @border-color;
+                    padding: 45px 0;
+                    text-align: center;
+                    position: relative;
+                    >p {
+                        margin-bottom: 0;
+                        >strong {
+                            font-size: 30px;
+                        }
+                    }
+                    &::before,
+                    &::after {
+                        content: '';
+                        background-color: #f0f0f0;
+                        position: absolute;
+                        width: 16px;
+                        height: 16px;
+                        border-radius: 50%;
+                        left: -8px;
+                    }
+                    &::before {
+                        top: -8px;
+                    }
+                    &::after {
+                        bottom: -8px;
+                    }
+                    .tooltips {
+                        position: absolute;
+                        top: 20px;
+                        text-align: center;
+                        /* 给父容器添加宽度不然提示框框的大小无法容纳文字会换行 */
+                        width: 100%;
+                        >button {
+                            background-color: #fff;
+                            padding: 6px 8px;
+                            &:first-child {
+                                border: 1px solid @main-color;
+                                color: @main-color
+                            }
+                            /* 注意提示的时候会在后面多加一个div 这个时候button就不是最后一个子元素 样式就无法生效 */
+                            &:last-of-type {
+                                border: 1px solid #0f0;
+                                color: #0f0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* 新闻区域的样式 */
+
+#news {
+    padding: 40px 0;
+    .row {
+        >div {
+            >h4 {
+                text-align: center;
+                line-height: 40px;
+                border-bottom: 1px dashed @border-color;
+                position: relative;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    border: 1px solid @border-color;
+                    right: -10px;
+                    bottom: -5px;
+                }
+            }
+            .nav-tabs {
+                border-bottom: 0;
+                >li {
+                    /* 专门针对ipad和手机让每个li平均分 */
+                    @media(max-width: 991px) {
+                        width: 25%;
+                        float: left;
+                        >a {
+                            margin: 0px auto;
+                        }
+                    }
+                    &.active {
+                        >a {
+                            background-color: @main-color;
+                        }
+                    }
+                    >a {
+                        font-size: 30px;
+                        border-radius: 50%;
+                        border: none;
+                        margin-bottom: 20px;
+                        width: 60px;
+                        height: 60px;
+                        text-align: center;
+                        color: @a-color;
+                        &:hover {
+                            background-color: @main-color;
+                        }
+                    }
+                }
+            }
+            .tab-content {
+                .tab-pane {
+                    >ul {
+                        >li {
+                            list-style: none;
+                            line-height: 40px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* 合作伙伴区域样式 */
+
+#parner {
+    padding: 30px 0;
+    .container {
+        >h3 {
+            text-align: center;
+        }
+        >ul {
+            display: flex;
+            /* 移动端比较小放9个出现滚动条 需要换行 */
+            flex-wrap: wrap;
+            >li {
+                flex: 1;
+                list-style: none;
+                min-width: 60px;
+                >a {
+                    color: @a-color;
+                    display: block;
+                    text-align: center;
+                    &:hover {
+                        color: @main-color;
+                        text-decoration: none;
+                    }
+                    >i {
+                        font-size: 60px;
+                    }
+                }
+            }
+        }
+    }
+}
